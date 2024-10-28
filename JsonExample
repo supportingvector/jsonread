@@ -27,7 +27,7 @@ public class JsonSave : MonoBehaviour
         var json = JsonUtility.ToJson(data);
 
         // 保存Json字符串到文件中
-        System.IO.File.WriteAllText("data.json", json);
+        System.IO.File.WriteAllText(Application.dataPath + "data.json", json);
     }
 
     [Serializable]
