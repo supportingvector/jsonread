@@ -1,0 +1,53 @@
+using UnityEngine;
+using System;
+//https://www.bytezonex.com/archives/juFslA55.html
+public class JsonSave : MonoBehaviour
+{
+    private void Start()
+    {
+        SceneOption sceneOption = new SceneOption
+        {
+            key = "1915",
+            value = "1"
+        };
+
+        // 创建 Scene 对象
+        Scene scene = new Scene
+        {
+            id = "ts002",
+            sceneOption = new List<SceneOption> { sceneOption }
+        };
+
+        // 创建 Data 对象并填充数据
+        Data myData = new Data
+        {
+            data = new List<Scene> { scene }
+        };
+        // 将数据对象转换为Json字符串
+        var json = JsonUtility.ToJson(data);
+
+        // 保存Json字符串到文件中
+        System.IO.File.WriteAllText("data.json", json);
+    }
+
+    [Serializable]
+    public class SceneOption
+    {
+        public string key;
+        public string value;
+    }
+    
+    [Serializable]
+    public class Scene
+    {
+        public string id;
+        public List<SceneOption> sceneOption;
+    }
+    
+    [Serializable]
+    public class Data
+    {
+        public List<Scene> data;
+    }
+
+}
