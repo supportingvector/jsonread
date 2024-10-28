@@ -6,7 +6,7 @@ public class JsonExample : MonoBehaviour
     private void Start()
     {
         // 读取Json文件的内容
-        var json = System.IO.File.ReadAllText("data.json");
+        var json = System.IO.File.ReadAllText(Application.dataPath + "data.json");
 
         // 将Json字符串转换为数据对象
         var data = JsonUtility.FromJson<Data>(json);
